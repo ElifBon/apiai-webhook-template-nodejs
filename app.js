@@ -21,21 +21,29 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
-// [START YourAction]
+const NAME_ACTION = 'make_name';
+const MOVIE_ARGUMENT = 'moviename';
+
+// [START Test application]
 app.post('/', function (req, res) {
   const assistant = new Assistant({request: req, response: res});
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
 
-  // Fulfill action business logic
-  function responseHandler (assistant) {
-    // Complete your fulfillment logic and send a response
-    assistant.tell('Hello, World!');
+  // Make movie name
+  function makeName (assistant) {
+    let movie = assistant.getArgument(MOVIE_ARGUMENT);
+    assistant.tell('Alright, your silly name is ' +
+      movie  +
+      '! I hope you like it. See you next time.');
   }
 
-  assistant.handleRequest(responseHandler);
+  let actionMap = new Map();
+  actionMap.set(NAME_ACTION, makeName);
+
+  assistant.handleRequest(actionMap);
 });
-// [END YourAction]
+// [END movie name]
 
 if (module === require.main) {
   // [START server]
