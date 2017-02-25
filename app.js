@@ -37,8 +37,7 @@ app.post('/', function (req, res) {
     request('http://www.google.com', function (error, response, body) {
       if (!error && response.statusCode == 200) {
           console.log(body) // Print the google web page.
-       }else{
-         assistant.tell('Alright, your favourite movie name is ' +
+        assistant.tell('Alright, your favourite movie name is ' +
       movie  +
       '! I hope you like it. See you next time.');
        }
