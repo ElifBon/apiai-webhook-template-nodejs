@@ -32,15 +32,14 @@ app.post('/', function (req, res) {
 
   // Make movie name
   function handleRequest (assistant) {
+    
     let intent = assistant.getIntent();
-    switch(intent){
-        case NAME_ACTION:
+  switch (intent) {
+        case MOVIE_ARGUMENT:
         let movie = assistant.getArgument(MOVIE_ARGUMENT);
         assistant.tell('Alright, your fav movie name is ' +
         movie  +
         '! I hope you like it. See you next time.');
-        break;
-      default:
         break;
     }
     
