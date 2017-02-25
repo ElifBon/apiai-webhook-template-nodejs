@@ -18,6 +18,7 @@ let Assistant = require('actions-on-google').ApiAiAssistant;
 let express = require('express');
 let bodyParser = require('body-parser');
 let request = require('request');
+const imdb = require('imdb-search');
 
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
@@ -33,16 +34,18 @@ app.post('/', function (req, res) {
 
   // Make movie name
   function makeName (assistant) {
-    
-    request('http://www.google.com', function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-          console.log(body) // Print the google web page.
-        let movie = assistant.getArgument(MOVIE_ARGUMENT);
-        assistant.tell('Alright, your favourite movie name is ' +
+    let movie = assistant.getArgument(MOVIE_ARGUMENT);
+    imdb.search(movie)
+       .then(result => {
+        let movieresult = imdb.get(0);
+          console.log(`${movieresult.id}: ${movieresult.title} - ${movieresult.year}`);
+      assistant.tell('Alright, your favourite movie name is ' +
       movie  +
       '! I hope you like it. See you next time.');
-       }
-    })  
+     })
+   .catch(err => {
+      console.log(err);
+   });
     
   }
 
