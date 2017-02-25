@@ -30,13 +30,11 @@ app.post('/', function (req, res) {
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
 
-  // Make movie name
   function makeName (assistant) {
-    let movie = assistant.getArgument(MOVIE_ARGUMENT);
-      assistant.tell('Alright, your favourite movie name is ' +
+   let movie = assistant.getArgument(MOVIE_ARGUMENT);
+     assistant.tell('Alright, your favourite movie name is ' +
       movie  +
       '! I hope you like it. See you next time.');
-    
   }
 
   let actionMap = new Map();
