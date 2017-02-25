@@ -35,7 +35,6 @@ app.post('/', function (req, res) {
      assistant.tell('Alright, your favourite movie name is ' +
       movie  +
       '! I hope you like it. See you next time.');
-})
   }
 
   let actionMap = new Map();
