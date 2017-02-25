@@ -17,7 +17,6 @@ process.env.DEBUG = 'actions-on-google:*';
 let Assistant = require('actions-on-google').ApiAiAssistant;
 let express = require('express');
 let bodyParser = require('body-parser');
-let request = require('request');
 
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
