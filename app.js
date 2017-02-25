@@ -29,11 +29,10 @@ app.post('/', function (req, res) {
   const assistant = new Assistant({request: req, response: res});
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
-
-  function makeName (assistant) {
   
-  let number = assistant.getArgument(MOVIE_ARGUMENT);
-   assistant.tell('Alright, your favourite movie name is ' +
+  function makeName (assistant) {
+    let number = assistant.getArgument(MOVIE_ARGUMENT);
+    assistant.tell('Alright, your favourite movie name is ' +
                   movie  +
                   '! I hope you like it. See you next time.');
   }
