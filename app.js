@@ -32,10 +32,10 @@ app.post('/', function (req, res) {
 
   function makeName (assistant) {
   
-    let number = assistant.getArgument(MOVIE_ARGUMENT);
-    assistant.tell('Alright, your favourite movie name is ' +
-      movie  +
-      '! I hope you like it. See you next time.');
+   let number = assistant.getArgument(MOVIE_ARGUMENT);
+   assistant.tell('Alright, your favourite movie name is ' +
+     movie  +
+     '! I hope you like it. See you next time.');
   }
 
   let actionMap = new Map();
