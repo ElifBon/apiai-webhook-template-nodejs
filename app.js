@@ -31,7 +31,7 @@ app.post('/', function (req, res) {
   console.log('Request body: ' + JSON.stringify(req.body));
 
   // Make movie name
-  function handleRequest (assistant) {
+  function responseHandler (assistant) {
     
     let intent = assistant.getIntent();
   switch (intent) {
