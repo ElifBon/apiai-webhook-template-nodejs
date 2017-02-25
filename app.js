@@ -34,8 +34,6 @@ app.post('/', function (req, res) {
   // Make movie name
   function makeName (assistant) {
     let movie = assistant.getArgument(MOVIE_ARGUMENT);
-    
-          console.log(`${movieresult.id}: ${movieresult.title} - ${movieresult.year}`);
       assistant.tell('Alright, your favourite movie name is ' +
       movie  +
       '! I hope you like it. See you next time.');
