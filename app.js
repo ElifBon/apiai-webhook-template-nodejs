@@ -17,6 +17,7 @@ process.env.DEBUG = 'actions-on-google:*';
 let Assistant = require('actions-on-google').ApiAiAssistant;
 let express = require('express');
 let bodyParser = require('body-parser');
+let request = require('request');
 
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
@@ -35,6 +36,11 @@ app.post('/', function (req, res) {
      assistant.tell('Alright, your favourite movie name is ' +
       movie  +
       '! I hope you like it. See you next time.');
+    request('http://www.google.com', function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body) // Print the google web page.
+     }
+})
   }
 
   let actionMap = new Map();
